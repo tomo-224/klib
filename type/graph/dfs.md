@@ -28,4 +28,4 @@ int main(){
 }
 ```
 
-<a href = "https://github.com/tomo-224/klib/blob/main/type/graph.md>戻る</a>
+<a href = "https://github.com/tomo-224/klib/blob/main/type/graph.md">戻る</a>
