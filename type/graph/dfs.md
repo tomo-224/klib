@@ -28,4 +28,4 @@ int main(){
 }
 ```
 
-<a href =  "graph.md">戻る</a>
+<a href =  "type/graph.md">戻る</a>
