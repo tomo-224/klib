@@ -3,7 +3,7 @@
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
-namespace data {
+namespace structure {
   struct dsu {
     vector<int> parent;
     dsu(int n){
@@ -37,7 +37,7 @@ namespace data {
 }
 int main(){
   int n; cin >> n;
-  data::dsu d(n);
+  structure::dsu d(n);
   for (int i = 0; i < n; i++){
     int a, b; cin >> a >> b; a--; b--;
     d.merge(a, b);
