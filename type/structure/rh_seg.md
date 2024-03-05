@@ -2,6 +2,8 @@
 ```cpp
 #include <bits/stdc++.h>
 #include <atcoder/all>
+using namespace std;
+using namespace atcoder;
 using ll = long long;
 
 namespace structure {
@@ -177,9 +179,9 @@ int main(){
   vector<int> a(s.begin(), s.end());
   auto b = a;
   reverse(b.begin(), b.end());
-  mint4 rnd; rnd.random_set();
+  structure::mint4 rnd; rnd.random_set();
   structure::rollinghash rh(n*2, rnd, a), rhr(n*2, rnd, b);
-  mint4 m = prod(0, n);
+  structure::mint4 m = rh.prod(0, n);
 }
 ```
 <a href = "https://github.com/tomo-224/klib/blob/main/type/structure.md">戻る</a>
