@@ -72,6 +72,14 @@ namespace structure {
   bool operator==(const mint4& t1, const mint4& t2) {
     return (t1.a == t2.a && t1.b == t2.b && t1.c == t2.c && t1.d == t2.d);
   }
+
+  bool operator<(const mint4& t1, const mint4& t2) {
+    if (t1.a != t2.a) return (t1.a.val() < t2.a.val());
+    if (t1.b != t2.b) return (t1.b.val() < t2.b.val());
+    if (t1.c != t2.c) return (t1.c.val() < t2.c.val());
+    if (t1.d != t2.d) return (t1.d.val() < t2.d.val());
+    return false;
+  }
   
   mint4 __rollinghash_addition(mint4 a, mint4 b){
     return a+b;
