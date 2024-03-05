@@ -10,20 +10,20 @@ namespace structure {
     size_t ai = 0, bi = 0;
     while (ai != a.size() || bi != b.size()) {
       if (ai == a.size()) {
-        ans.push_back(b[bi]);
+        ans.emplace_back(b[bi]);
         bi++;
       }
       else if (bi == b.size()) {
-        ans.push_back(a[ai]);
+        ans.emplace_back(a[ai]);
         ai++;
       }
       else {
         if (a[ai] < b[bi]) {
-          ans.push_back(a[ai]);
+          ans.emplace_back(a[ai]);
           ai++;
         }
         else {
-          ans.push_back(b[bi]);
+          ans.emplace_back(b[bi]);
           bi++;
         }
       }
