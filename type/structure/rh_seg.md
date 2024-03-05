@@ -16,10 +16,7 @@ namespace structure {
     mint9 a=0; mint10 b=0; mint19 c=0; mint21 d=0;
     
     mint4(int init = 0) {
-      a = init;
-      b = init;
-      c = init;
-      d = init;
+      set(init);
     }
     
     mint4 operator+(const mint4 &other) {
