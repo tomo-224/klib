@@ -1,4 +1,4 @@
-## weighted(重み付き) Union-Find
+## Weighted(重み付き) Union-Find
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
