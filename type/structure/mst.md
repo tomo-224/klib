@@ -92,5 +92,6 @@ int main() {
     p = t.lower_sum(l - 1, r, x);
     cout << p << endl;
   }
-}```
+}
+```
 <a href = "https://github.com/tomo-224/klib/blob/main/type/structure.md">戻る</a>
