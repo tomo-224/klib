@@ -1,2 +1,2 @@
 - <a href = "index.md">`index.md`</a>...目次
-- <a href = "tpl.cpp">`tpl.cpp`</a>...全部入ったテンプレ
+- <a href = "tpl.cpp">`tpl.cpp`</a>...ライブラリが全て入ったテンプレート
