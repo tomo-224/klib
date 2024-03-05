@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
-namespace data{
+namespace structure {
   struct w_dsu {
     vector<int> parent;
     vector<ll> weight;
@@ -45,7 +45,7 @@ namespace data{
 }
 int main(){
   int n, q; cin >> n >> q;
-  data::w_dsu d(n);
+  structure::w_dsu d(n);
   for (int i = 0; i < q; i++){
     int a, b; ll c; cin >> a >> b >> c;
     a--; b--;
