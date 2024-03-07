@@ -420,7 +420,7 @@ namespace structure {
   };
 }
 
-template<typename T>
+template <typename T>
 void prefix_sum(vector<T>& p, vector<T>& s){
   s.emplace_back(p[0]);
   for (size_t i = 1; i < p.size(); i++){
