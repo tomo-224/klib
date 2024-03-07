@@ -5,15 +5,14 @@
 using namespace std;
 using ll = long long;
 
-template<typename T>;
-void _prefix_sum(vector<T>& p, vector<T>& s){
+template<typename T>
+void prefix_sum(vector<T>& p, vector<T>& s){
   s.emplace_back(p[0]);
   for (size_t i = 1; i < p.size(); i++){
     s.emplace_back(p[i] + s.back());
   }
   return;
 }
-#define prefix_sum(v, s) _prefix_sum<(decltype(v))>(v, s)
 
 int main(){
   int n; cin >> n;
@@ -25,9 +24,7 @@ int main(){
   }
   vector<ll> t(1, 0);
   prefix_sum(v, t);
-  for (auto k : t) cerr << k << " ";
-  cerr << endl;
 }
 ```
 
-<a href = "">戻る</a>
+<a href = "https://github.com/tomo-224/klib/blob/main/type/technique.md">戻る</a>
