@@ -468,6 +468,16 @@ void prefix_sum(vector<T>& p, vector<T>& s){
     s.emplace_back(p[i] + s.back());
   }
   return;
+}　
+
+template <typename T>
+void compress(T a, T b){
+  vector m(a, b);
+  sort(all(m));
+  m.erase(unique(all(m)), m.end());
+  for (auto itr = a; itr != b; itr++){
+    *itr = (lower_bound(all(m), *itr) - m.begin());
+  }
 }
 
 
