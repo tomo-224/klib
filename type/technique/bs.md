@@ -10,7 +10,13 @@ int main(){
   ll l = 0, r = inf; //適宜変更
   while (l + 1 < r){
     ll mid = (l+r)/2;
-
+    //操作
+    if (/*条件式*/) {
+      l = mid;
+    }
+    else {
+      r = mid;
+    }
   }
 }
 ```
