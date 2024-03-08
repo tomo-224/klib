@@ -6,12 +6,12 @@ using ll = long long;
 #define all(v) v.begin(), v.end()
 
 template <typename T>
-void compress(vector<T>::iterator a, vector<T>::iterator b){
+void compress(T a, T b){
   vector<T> m(a, b);
   sort(all(m));
   m.erase(unique(all(m)), m.end());
   for (auto itr = a; itr != b; itr++){
-    itr* = lower_bound(all(m), itr*) - m.begin();
+    *itr = (lower_bound(all(m), *itr) - m.begin());
   }
 }
 
@@ -20,10 +20,10 @@ int main(){
   vector<ll> v(n); for (auto& p : v) cin >> p;
   auto w = v;
   auto a = v;
-  sort(a);
+  sort(all(a));
   a.erase(unique(all(a)), a.end());
   for (int i = 0; i < n; i++) {
-    v[i] = lower_bound(all(a), r[i]) - a.begin();
+    v[i] = lower_bound(all(a), v[i]) - a.begin();
   }
   for (auto k : v) cout << k << " ";
   cout << endl;
