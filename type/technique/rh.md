@@ -81,21 +81,33 @@ namespace structure {
   }
   
   struct str_hash {
+    size_t size;
     mint4 rnd, rrnd;
     string data;
     vector<mint4> mp, rmp;
     vector<mint4> prefix, suffix;
-    size_t size;
-    str_hash(size_t z, mint4 r, string d) : size(z), rnd(r), data(d) {
+    str_hash(size_t z = 0, mint4 r = mint4(0), string d = "") : size(z), rnd(r), data(d) {
+      if (z != 0) {
+        rrnd = mint4(1) / rnd;
+        mp = rmp = vector<mint4>(z, mint4(1));
+        for (size_t i = 1; i < z; i++) mp[i] = mp[i-1] * rnd;
+        for (size_t i = 1; i < z; i++) rmp[i] = rmp[i-1] * rrnd;
+        prefix = suffix = vector<mint4>(z, mint4(0));
+        prefix[0].set(data[0]);
+        for (size_t i = 1; i < z; i++) prefix[i] = prefix[i-1] * rnd + mint4(data[i]);
+        suffix[z-1].set(data.back());
+        for (int i = z-2; i >= 0; i--) suffix[i] = mint4(data[i]) * mp[z-i-1] + suffix[i + 1];
+      }
+    }
+    str_hash(size_t z, mint4 r, string d, vector<mint4>& mi, vector<mint4>& rmi) : size(z), rnd(r), data(d), mp(mi), rmp(rmi) {
       rrnd = mint4(1) / rnd;
-      mp = rmp = vector<mint4>(z, mint4(1));
-      for (size_t i = 1; i < z; i++) mp[i] = mp[i-1] * rnd;
-      for (size_t i = 1; i < z; i++) rmp[i] = rmp[i-1] * rrnd;
-      prefix = suffix = vector<mint4>(z, mint4(0));
-      prefix[0].set(data[0]);
-      for (size_t i = 1; i < z; i++) prefix[i] = prefix[i-1] * rnd + mint4(data[i]);
-      suffix[z-1].set(data.back());
-      for (int i = z-2; i >= 0; i--) suffix[i] = mint4(data[i]) * mp[z-i-1] + suffix[i];
+      if (z != 0) {
+        prefix = suffix = vector<mint4>(z, mint4(0));
+        prefix[0].set(data[0]);
+        for (size_t i = 1; i < z; i++) prefix[i] = prefix[i-1] * rnd + mint4(data[i]);
+        suffix[z-1].set(data.back());
+        for (int i = z-2; i >= 0; i--) suffix[i] = mint4(data[i]) * mp[z-i-1] + suffix[i + 1];
+      }
     }
     mint4 hash(int l, int r){
       if (l == r) return mint4(0);
