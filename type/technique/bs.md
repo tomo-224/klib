@@ -20,3 +20,5 @@ int main(){
   }
 }
 ```
+
+<a href = "https://github.com/tomo-224/klib/blob/main/type/technique.md">戻る</a>
