@@ -7,7 +7,7 @@ using ll = long long;
 
 template <typename T>
 void compress(T a, T b){
-  vector<T> m(a, b);
+  vector m(a, b);
   sort(all(m));
   m.erase(unique(all(m)), m.end());
   for (auto itr = a; itr != b; itr++){
