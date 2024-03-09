@@ -468,7 +468,7 @@ void prefix_sum(vector<T>& p, vector<T>& s){
     s.emplace_back(p[i] + s.back());
   }
   return;
-}　
+}
 
 template <typename T>
 void compress(T a, T b){
