@@ -480,6 +480,9 @@ void compress(T a, T b){
   }
 }
 
+template <typename T>
+using rpq = priority_queue<T, vector<T>, greater<T>>;
+
 
 signed main()
 {
