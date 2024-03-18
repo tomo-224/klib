@@ -489,7 +489,7 @@ namespace structure {
     //member function
     void set(std::size_t pos, ull n) {
       value |= (1ull << pos);
-      value &= (n << pos);
+      value ^= (!n << pos);
       return;
     }
     bool at(std::size_t pos) {
