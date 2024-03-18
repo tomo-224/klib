@@ -71,3 +71,5 @@ ull& val()
 string bin()
 ```
   - 内部の値を二進数で表した文字列を返します。デバッグ用です。
+
+<a href = "https://github.com/tomo-224/klib/blob/main/type/structure.md">戻る</a>
