@@ -44,6 +44,9 @@ namespace structure {
     ull& val(){
       return value;
     }
+    std::string bin(){
+      return std::bitset<64>(value).to_string();
+    }
   };
   
   //operators
