@@ -35,21 +35,23 @@ std::ostream << b
 ### メンバ関数
 通常の整数型にはない、特有のメンバ関数を提供しています。
 
-- ビット変更
+**ビット変更**
 ```cpp
 //set
 void set(std::size_t pos, ull n)
 ```
   - 下から`pos`番目のビットを`n`に変更します。
+<br>
 
-- ビットアクセス
+**ビットアクセス**
 ```cpp
 //at
 bool at(std::size_t pos)
 ```
   - 「下からpos番目のbitが立っているか？」を真偽値として返します。
+<br>
 
-- インクリメント
+**インクリメント**
 ```cpp
 //next
 bool set(const bit m)
@@ -57,19 +59,23 @@ bool set(const bit m)
   - 自身をインクリメントします。
   - もし`m`以上であれば、`false`を返します。
   - do_while文とともに使うことができます。
+<br>
 
-- 値取得
+**値取得**
 ```cpp
 //val
 ull& val()
 ```
   - 内部の値そのものを返します。
+<br>
 
-- 二進変換
+**二進変換**
 ```cpp
 //bin
 string bin()
 ```
   - 内部の値を二進数で表した文字列を返します。デバッグ用です。
+<br>
+
 
 <a href = "https://github.com/tomo-224/klib/blob/main/type/structure.md">戻る</a>
