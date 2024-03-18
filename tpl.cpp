@@ -467,16 +467,16 @@ namespace structure {
     bit(ull v = 0) : value(v) {};
 
     //operators
-    bit& operator+=(const bit& other) { this->value += other.value; return *this; }
-    bit& operator-=(const bit& other) { this->value -= other.value; return *this; }
-    bit& operator*=(const bit& other) { this->value *= other.value; return *this; }
-    bit& operator/=(const bit& other) { this->value /= other.value; return *this; }
-    bit& operator%=(const bit& other) { this->value %= other.value; return *this; }
-    bit& operator<<=(const bit& other) { this->value <<= other.value; return *this; }
-    bit& operator>>=(const bit& other) { this->value >>= other.value; return *this; }
-    bit& operator&=(const bit& other) { this->value &= other.value; return *this; }
-    bit& operator|=(const bit& other) { this->value |= other.value; return *this; }
-    bit& operator^=(const bit& other) { this->value ^= other.value; return *this; }
+    bit& operator+=(const bit& other) { value += other.value; return *this; }
+    bit& operator-=(const bit& other) { value -= other.value; return *this; }
+    bit& operator*=(const bit& other) { value *= other.value; return *this; }
+    bit& operator/=(const bit& other) { value /= other.value; return *this; }
+    bit& operator%=(const bit& other) { value %= other.value; return *this; }
+    bit& operator<<=(const bit& other) { value <<= other.value; return *this; }
+    bit& operator>>=(const bit& other) { value >>= other.value; return *this; }
+    bit& operator&=(const bit& other) { value &= other.value; return *this; }
+    bit& operator|=(const bit& other) { value |= other.value; return *this; }
+    bit& operator^=(const bit& other) { value ^= other.value; return *this; }
     bit& operator++() { value++; return *this; }
     bit operator++(signed) { bit tmp(value); value++; return tmp; }
     bit& operator--() { value--; return *this; }
@@ -502,13 +502,16 @@ namespace structure {
     ull& val(){
       return value;
     }
+    std::string bin(){
+      return std::bitset<64>(value).to_string();
+    }
   };
   
   //operators
   std::istream& operator>>(std::istream& is, bit& b){
-    return is >> b.val();
+    return is >> b.value;
   }
-  std::ostream& operator<<(std::ostream& os, bit& b){
+  std::ostream& operator<<(std::ostream& os, bit b){
     return os << b.val();
   }
   bit operator+(const bit& t1, const bit& t2) { return bit(t1) += t2; }
