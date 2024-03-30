@@ -77,5 +77,12 @@ string bin()
   - 内部の値を二進数で表した文字列を返します。デバッグ用です。
 <br>
 
+**立ったビット数**
+```cpp
+//count
+int count()
+```
+  - 立っている(1になっている)ビットの数を数えます。
+<br>
 
 <a href = "https://github.com/tomo-224/klib/blob/main/type/structure.md">戻る</a>
