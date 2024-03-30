@@ -48,6 +48,9 @@ namespace structure {
     std::string bin(){
       return std::bitset<64>(value).to_string();
     }
+    int count(){
+      return std::popcount(value);
+    }
   };
   
   //operators
