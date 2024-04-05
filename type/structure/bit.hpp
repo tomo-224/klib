@@ -74,6 +74,6 @@ namespace structure {
   bool operator>(const bit& t1, const bit& t2) { return t2 < t1; }
   bool operator<=(const bit& t1, const bit& t2) { return !(t1 > t2); }
   bool operator>=(const bit& t1, const bit& t2) { return !(t1 < t2); }
-  bool operator==(const bit& t1, const bit& t2) { return !(t1 < t2) && !(t2 > t2); }
+  bool operator==(const bit& t1, const bit& t2) { return !(t1 < t2) && !(t1 > t2); }
   bool operator!=(const bit& t1, const bit& t2) { return !(t1 == t2); }
 }
