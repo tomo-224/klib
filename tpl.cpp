@@ -531,9 +531,17 @@ namespace structure {
   bool operator>(const bit& t1, const bit& t2) { return t2 < t1; }
   bool operator<=(const bit& t1, const bit& t2) { return !(t1 > t2); }
   bool operator>=(const bit& t1, const bit& t2) { return !(t1 < t2); }
-  bool operator==(const bit& t1, const bit& t2) { return !(t1 < t2) && !(t2 > t2); }
+  bool operator==(const bit& t1, const bit& t2) { return !(t1 < t2) && !(t1 > t2); }
   bool operator!=(const bit& t1, const bit& t2) { return !(t1 == t2); }
 }
+
+using Bit = structure::bit;
+using dsu_ = structure::dsu;
+using structure::w_dsu;
+using structure::mint4;
+using structure::rollinghash;
+using structure::str_hash;
+using structure::mst;
 
 template <typename T>
 void prefix_sum(vector<T>& p, vector<T>& s){
