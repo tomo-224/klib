@@ -12,7 +12,7 @@ segtree_2D<class S, S (*op)(S, S), S (*e)()> seg(vector<vector<S>> v)
   - 長さ `h`, 幅 `w`, 初期値 `e()` の2次元セグメントツリーを構築します。
   - 要素の初期値が `v` の内容となる2次元セグメントツリーを構築します。
 
-- 計算量: $ O(HW) $
+- 計算量: $O(HW)$
 
 
 ### メンバ関数
@@ -24,7 +24,7 @@ segtree_2D<class S, S (*op)(S, S), S (*e)()> seg(vector<vector<S>> v)
 void set(int x, int y, S val)
 ```
   - `x` 行 `y` 列の要素を `val` に変更します。
-  - 計算量: $ O(\log H \log W) $
+  - 計算量: $O(\log H \log W)$
 <br>
 
 **要素取得**
@@ -33,7 +33,7 @@ void set(int x, int y, S val)
 S get(int x, int y)
 ```
   - `x` 行 `y` 列の要素を取得します。
-  - 計算量: $ O(1) $
+  - 計算量: $O(1)$
 <br>
 
 **全体取得**
@@ -42,7 +42,7 @@ S get(int x, int y)
 S all_prod()
 ```
   - 要素全体について `op` の計算をした結果を返します。
-  - 計算量: $ O(1) $
+  - 計算量: $O(1)$
 <br>
 
 **範囲取得**
@@ -51,7 +51,7 @@ S all_prod()
 S prod(int u, int d, int l, int r)
 ```
   - `u` 行目から `d - 1` 行目まで、`l` 列目から `r - 1` 列目までで表される、長方形の領域について `op` を計算し、結果を返します。
-  - 計算量: $ O(\log H \log W) $
+  - 計算量: $O(\log H \log W)$
 <br>
 
 <a href = "https://github.com/tomo-224/klib/blob/main/type/structure.md">戻る</a>
