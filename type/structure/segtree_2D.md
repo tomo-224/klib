@@ -1,4 +1,4 @@
-## 2次元セグメントツリー
+## 2D Segment Tree(二次元セグメント木)
 ### ソースコード $...$ <a href = "segtree_2D.hpp">segtree_2D.hpp</a>
 ### コンストラクタ
 ```cpp
