@@ -534,6 +534,7 @@ namespace structure {
   bool operator==(const bit& t1, const bit& t2) { return !(t1 < t2) && !(t1 > t2); }
   bool operator!=(const bit& t1, const bit& t2) { return !(t1 == t2); }
   
+  template <class S, S (*op)(S, S), S (*e)()>
   struct Segtree {
       vector<S> Tree;
       int n;
