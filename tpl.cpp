@@ -536,7 +536,7 @@ namespace structure {
   
   template <class S, S (*op)(S, S), S (*e)()>
   struct Segtree {
-      vector<S> Tree;
+      std::vector<S> Tree;
       int n;
       int depth = 1, width = 1;
       Segtree(int N = 0) : n(N) {
@@ -545,7 +545,7 @@ namespace structure {
           for (int i = width; i < width * 2; i++) Tree[i] = e();
           for (int i = width-1; i >= 0; i--) Tree[i] = op(Tree[i<<1], Tree[i<<1|1]);
       }
-      Segtree(vector<S> v) {
+      Segtree(std::vector<S> v) {
           n = v.size();
           while (width < n) depth++, width <<= 1;
           Tree.resize(width * 2);
