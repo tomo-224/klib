@@ -3,8 +3,8 @@
 ### コンストラクタ
 ```cpp
 //宣言
-segtree_2D<class S, S (*op)(S, S), S (*e)()> seg(int h, int w)
-segtree_2D<class S, S (*op)(S, S), S (*e)()> seg(vector<vector<S>> v)
+Segtree_2D<class S, S (*op)(S, S), S (*e)()> seg(int h, int w)
+Segtree_2D<class S, S (*op)(S, S), S (*e)()> seg(vector<vector<S>> v)
 ```
 - `S` は型
 - `op` は取得用の二項演算
