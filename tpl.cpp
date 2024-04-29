@@ -2,7 +2,8 @@
 #define MAIN
 #include __FILE__
 
-//using namespace structure;
+//using mint = modint998244353;
+
 void _main(){
   
 }
@@ -17,8 +18,6 @@ void _main(){
 #if __has_include(<atcoder/all>)
 #include <atcoder/all>
 using namespace atcoder;
-using modint10 = modint1000000007;
-using motint9 = modint998244353;
 #endif
 using namespace std;
 
