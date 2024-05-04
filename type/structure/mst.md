@@ -1,4 +1,7 @@
 ## Merge Sort Tree
+
+### ソースコード $...$ <a href = "mst.hpp">mst.hpp</a>
+
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
