@@ -19,7 +19,7 @@ mst m(vector<ll>& init)
 //lower_amt
 ll lower_amt(ll l, ll r, ll x)
 ```
-  - `init` の $[l, r)$ において $ x $ 以下の要素の**個数**を求めます。
+  - `init` の $[l, r)$ において $x$ 以下の要素の**個数**を求めます。
   - 計算量: $O(\log ^2 N)$
 <br>
 
@@ -28,7 +28,7 @@ ll lower_amt(ll l, ll r, ll x)
 //lower_sum
 ll lower_sum(ll l, ll r, ll x)
 ```
-  - `init` の $[l, r)$ において $ x $ 以下の要素の**和**を求めます。
+  - `init` の $[l, r)$ において $x$ 以下の要素の**和**を求めます。
   - 計算量: $O(\log ^2 N)$
 <br>
 
