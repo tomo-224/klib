@@ -602,6 +602,13 @@ void compress(T a, T b){
 template <typename T>
 using rpq = priority_queue<T, vector<T>, greater<T>>;
 
+template <class T>
+void operator+=(vector<T>& v, const T& t) {
+  v.emplace_back(t);
+}
+
+template <typename T
+
 
 signed main()
 {
