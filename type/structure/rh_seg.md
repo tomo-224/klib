@@ -160,14 +160,14 @@ namespace structure {
       mint4 all_prod(){
         return seg.all_prod();
       }
-      mint4 roll(int l, int r, mint4 pre){
+      mint4 next(int l, int r, mint4 pre){
         //l, r は移動先 [l, r)
         mint4 left, right; 
         left.set(data[l-1]);
         right.set(data[r-1]);
         return (((pre - left) + right * pows[r-l-1]) * rec);
       }
-      mint4 in_roll(int l, int r, mint4 pre){
+      mint4 prev(int l, int r, mint4 pre){
         //l, r は移動先 [l, r)
         mint4 left, right;
         left.set(data[l]);
