@@ -607,9 +607,6 @@ void operator+=(vector<T>& v, const T& t) {
   v.emplace_back(t);
 }
 
-template <typename T
-
-
 signed main()
 {
     cin.tie(0);
