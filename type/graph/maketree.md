@@ -35,3 +35,5 @@ void makeTree(vector<vector<int>>& e, int top, vector<int>& p, vector<vector<int
   return;
 }
 ```
+
+<a href = "https://github.com/tomo-224/klib/blob/main/type/graph.md">戻る</a>
