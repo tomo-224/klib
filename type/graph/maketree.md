@@ -1,7 +1,7 @@
 # 辺のみ与えられたグラフから根付き木を作成
 
 - 辺が繋がっている先を管理する二次元配列 `e`
-- 根付き木の根 `top`
+- 根付き木の根 `root`
 
 から、
 
@@ -15,13 +15,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void makeTree(vector<vector<int>>& e, int top, vector<int>& p, vector<vector<int>>& c, vector<int>& dist) {
+void makeTree(vector<vector<int>>& e, int root, vector<int>& p, vector<vector<int>>& c, vector<int>& dist) {
   int n = e.size();
-  p = vector<int>(n, top);
+  p = vector<int>(n, root);
   c = vector<vector<int>>(n, vector<int>(0));
   dist = vector<int>(n, -1);
   queue<int> q;
-  q.push(top); dist[top] = 0;
+  q.push(root); dist[root] = 0;
   int f;
   while (!q.empty()) {
     f = q.front(); q.pop();
