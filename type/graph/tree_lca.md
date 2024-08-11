@@ -4,20 +4,20 @@
 - 頂点の親を管理する配列 `p`
 - 頂点の子を管理する二次元配列 `c` ( 任意 )
 - 頂点の高さを管理する配列 `dist` ( 任意 )
-- 根付き木の根 `top` ( 未設定の場合 0 )
+- 根付き木の根 `root` ( 未設定の場合 0 )
 
 から、任意の二頂点の LCA を求められるようにします。
 
 ## コンストラクタ
 ```cpp
-tree_LCA tl(vector<int>& par, int t = 0)
-tree_LCA tl(vector<int>& par, vector<vector<int>>& chi, int t = 0)
-tree_LCA tl(vector<int>& par, vector<int>& dis, int t = 0)
+tree_LCA tl(vector<int>& par, int r = 0)
+tree_LCA tl(vector<int>& par, vector<vector<int>>& chi, int r = 0)
+tree_LCA tl(vector<int>& par, vector<int>& dis, int r = 0)
 ```
 - `par` → `p`
 - `chi` → `c`
 - `dis` → `dist`
-- `t` → `top`
+- `r` → `root`
 
 にそれぞれ対応しています。
 
@@ -49,7 +49,7 @@ private:
   vector<vector<int>> d;
   vector<int> p, dist;
   vector<vector<int>> c;
-  int top, size, d_size;
+  int root, size, d_size;
   
   void PtoC() {
     c = vector<vector<int>>(size, vector<int>(0));
@@ -59,7 +59,7 @@ private:
   void bfs() {
     dist = vector<int>(size, -1);
     queue<int> q;
-    q.push(top); dist[top] = 0;
+    q.push(root); dist[root] = 0;
     int f;
     while (!q.empty()) {
       f = q.front(); q.pop();
@@ -80,15 +80,15 @@ private:
 
 public:
 
-  tree_LCA(vector<int>& par, int t = 0) : p(par), top(t), size(p.size()) {
+  tree_LCA(vector<int>& par, int r = 0) : p(par), root(r), size(p.size()) {
     PtoC(); bfs(); doubling();
   }
   
-  tree_LCA(vector<int>& par, vector<vector<int>>& chi, int t = 0) : p(par), c(chi), top(t), size(p.size()) {
+  tree_LCA(vector<int>& par, vector<vector<int>>& chi, int r = 0) : p(par), c(chi), root(r), size(p.size()) {
     bfs(); doubling();
   }
   
-  tree_LCA(vector<int>& par, vector<int>& dis, int t = 0) : p(par), dist(dis), top(t), size(p.size()) {
+  tree_LCA(vector<int>& par, vector<int>& dis, int r = 0) : p(par), dist(dis), root(r), size(p.size()) {
     doubling();
   }
   
