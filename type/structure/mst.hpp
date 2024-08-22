@@ -45,6 +45,7 @@ namespace structure {
         for (size_t j = 0; j < data[i].size(); j++) sum[i][j+1] = sum[i][j] + data[i][j];
       }
     }
+
     ll leq_amt(size_t l, size_t r, ll x) {
       ll ans = 0;
       l += width, r += width;
