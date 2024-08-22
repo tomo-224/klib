@@ -2,79 +2,67 @@
 #include <algorithm>
 
 using ll = long long;
-#define all(v) v.begin(), v.end()
 
 namespace structure {
-  void merge_arr(std::vector<ll>& ans, std::vector<ll>& a, std::vector<ll>& b) {
-    ans = std::vector<ll>(0);
-    std::size_t ai = 0, bi = 0;
-    while (ai != a.size() || bi != b.size()) {
-      if (ai == a.size()) {
-        ans.emplace_back(b[bi]);
-        bi++;
-      }
-      else if (bi == b.size()) {
-        ans.emplace_back(a[ai]);
-        ai++;
-      }
-      else {
-        if (a[ai] < b[bi]) {
-          ans.emplace_back(a[ai]);
-          ai++;
+  class mst {
+  private:
+    size_t size;
+    std::vector<std::vector<ll>> data;
+    std::vector<std::vector<ll>> sum;
+    size_t width, height;
+    void merge(size_t result) {
+      size_t first = result << 1, second = (result << 1) + 1;
+      size_t f = 0, s = 0;
+      while (f != data[first].size() && s != data[second].size()) {
+        if (data[first][f] < data[second][s]) {
+          data[result].emplace_back(data[first][f]);
+          ++f;
         }
         else {
-          ans.emplace_back(b[bi]);
-          bi++;
+          data[result].emplace_back(data[second][s]);
+          ++s;
         }
       }
+      data[result].insert(data[result].end(), data[first].begin() + f, data[first].end());
+      data[result].insert(data[result].end(), data[second].begin() + s, data[second].end());
     }
-  }
-  
-  struct mst {
-    std::vector<std::vector<std::vector<ll>>> data, sum;
-    std::size_t depth, width;
+  public:
     mst(std::vector<ll>& init) {
-      depth = 0; width = 1;
-      if (init.size() == 1) init.emplace_back(0);
-      while (width < init.size()) {
-        data.emplace_back(std::vector<std::vector<ll>>(width, std::vector<ll>(1, 0)));
-        depth++; width *= 2;
+      size = init.size();
+      width = 1, height = 1;
+      while (width < size) {
+        width <<= 1;
+        height++;
       }
-      data.emplace_back(std::vector<std::vector<ll>>(width, std::vector<ll>(1, 0)));
-      depth++;
-      for (std::size_t i = 0; i < init.size(); i++) {
-        data[depth - 1][i].emplace_back(init[i]);
+      data = std::vector<std::vector<ll>>(width*2, std::vector<ll>(0));
+      for (size_t i = 0; i < size; i++) data[width+i] = std::vector<ll>(1, init[i]);
+      for (size_t i = width-1; i >= 1; i--) merge(i);
+      
+      sum.resize(width*2);
+      for (size_t i = 1; i < width*2; i++) {
+        sum[i].resize(data[i].size()+1);
+        sum[i][0] = 0;
+        for (size_t j = 0; j < data[i].size(); j++) sum[i][j+1] = sum[i][j] + data[i][j];
       }
-      for (int i = depth - 2; i >= 0; i--) for (int j = 0; j < ll(data[i].size()); j++) merge_arr(data[i][j], data[i + 1][j * 2], data[i + 1][j * 2 + 1]);
-      //ABC339-G用 必要に応じて削除
-      sum = data;
-      for (auto& vv : sum) for (auto& v : vv) for (int i = 1; i < ll(v.size()); i++) v[i] += v[i - 1];
     }
-    ll lower_sum(ll lef, ll rig, ll x) {
-      return sum_(lef, rig, 0, width, 0, x);
-    }
-    ll sum_(ll lef, ll rig, ll a, ll z, ll i, ll x) {
-      ll ret;
-      if (rig <= a || z <= lef) ret = 0LL;
-      else if (lef <= a && z <= rig) {
-        ll idx = std::upper_bound(all(data[i][a >> (depth - i - 1)]), x) - data[i][a >> (depth - i - 1)].begin() - 1;
-        ret = sum[i][a >> (depth - i - 1)][idx];
+    ll leq_amt(size_t l, size_t r, ll x) {
+      ll ans = 0;
+      l += width, r += width;
+      for (; l < r; l >>= 1, r >>= 1) {
+        if (l & 1) ans += std::upper_bound(data[l].begin(), data[l].end(), x) - data[l].begin(), ++l;
+        if (r & 1) --r, ans += std::upper_bound(data[r].begin(), data[r].end(), x) - data[r].begin();
       }
-      else ret = sum_(lef, rig, a, z - (width >> (i + 1)), i + 1, x) + sum_(lef, rig, z - (width >> (i + 1)), z, i + 1, x);
-      return ret;
+      return ans;
     }
     
-    ll lower_amt(ll lef, ll rig, ll x) {
-      return amt_(lef, rig, 0, width, 0, x);
-    }
-    ll amt_(ll lef, ll rig, ll a, ll z, ll i, ll x) {
-      ll ret;
-      if (rig <= a || z <= lef) ret = 0LL;
-      else if (lef <= a && z <= rig) {
-        ret = std::upper_bound(all(data[i][a >> (depth - i - 1)]), x) - data[i][a >> (depth - i - 1)].begin() - 1;
+    ll leq_sum(size_t l, size_t r, ll x) {
+      ll ans = 0;
+      l += width, r += width;
+      for (; l < r; l >>= 1, r >>= 1) {
+        if (l & 1) ans += sum[l][std::upper_bound(data[l].begin(), data[l].end(), x) - data[l].begin()], ++l;
+        if (r & 1) --r, ans += sum[r][std::upper_bound(data[r].begin(), data[r].end(), x) - data[r].begin()];
       }
-      else ret = amt_(lef, rig, a, z - (width >> (i + 1)), i + 1, x) + amt_(lef, rig, z - (width >> (i + 1)), z, i + 1, x);
-      return ret;
+      return ans;
     }
   };
 }
