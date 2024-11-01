@@ -49,7 +49,11 @@ namespace structure {
       return std::bitset<64>(value).to_string();
     }
     int count(){
+      #if __cplusplus > 202000L
       return std::popcount(value);
+      #else
+      return __builtin_popcount(value);
+      #endif
     }
   };
   
