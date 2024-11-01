@@ -11,7 +11,7 @@ public:
   }
   prefix_sum_2D(std::vector<std::vector<T>> &v) : data(v) {
     height = v.size();
-    width = (v.empty() ? 0z : v[0].size());
+    width = (v.empty() ? size_t(0) : v[0].size());
     sum = std::vector<std::vector<T>>(height+1, std::vector<T>(width+1, e()));
     if (v.empty()) return;
     for (int i = 0; i < height; i++) {
