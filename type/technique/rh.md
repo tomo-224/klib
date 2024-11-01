@@ -115,8 +115,8 @@ namespace structure {
     }
     mint4 hash(int l, int r){
       if (l == r) return mint4(0);
-      assert(0 <= l && l < size);
-      assert(0 < r && r <= size);
+      assert(0 <= l && l < ll(size));
+      assert(0 < r && r <= ll(size));
       assert(l < r);
       return prefix[r-1] - (l == 0 ? mint4(0) : prefix[l-1]) * mp[r-l];
     }
