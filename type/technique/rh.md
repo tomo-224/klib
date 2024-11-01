@@ -84,45 +84,95 @@ namespace structure {
     return false;
   }
   
-  struct str_hash {
-    size_t size;
-    mint4 rnd, rrnd;
-    string data;
-    vector<mint4> mp, rmp;
-    vector<mint4> prefix, suffix;
-    str_hash(size_t z = 0, mint4 r = mint4(0), string d = "") : size(z), rnd(r), data(d) {
-      if (z != 0) {
-        rrnd = mint4(1) / rnd;
-        mp = rmp = vector<mint4>(z, mint4(1));
-        for (size_t i = 1; i < z; i++) mp[i] = mp[i-1] * rnd;
-        for (size_t i = 1; i < z; i++) rmp[i] = rmp[i-1] * rrnd;
-        prefix = suffix = vector<mint4>(z, mint4(0));
-        prefix[0].set(data[0]);
-        for (size_t i = 1; i < z; i++) prefix[i] = prefix[i-1] * rnd + mint4(data[i]);
-        suffix[z-1].set(data.back());
-        for (int i = z-2; i >= 0; i--) suffix[i] = mint4(data[i]) * mp[z-i-1] + suffix[i + 1];
+  mint4 __rollinghash_addition(mint4 a, mint4 b){
+    return a+b;
+  }
+  
+  mint4 __rollinghash_zero(){
+    mint4 ret;
+    return ret;
+  }
+  
+  using rollinghash_segtree = segtree<mint4, __rollinghash_addition, __rollinghash_zero>;
+  class rollinghash{
+    public:
+      int size;
+      vector<int> data;
+      vector<mint4> pows;
+      rollinghash(int dt, mint4 arg){
+        size = dt;
+        rnd = arg;
+        data.resize(size);
+        rec.set(1);
+        rec = rec / rnd;
+        pows = vector<mint4>(size+1);
+        pows[0].set(1);
+        for (int i = 1; i <= size; i++){
+          pows[i] = pows[i-1] * rnd;
+        }
+        rollinghash_segtree tmp(size);
+        seg = tmp;
       }
-    }
-    str_hash(size_t z, mint4 r, string d, vector<mint4>& mi, vector<mint4>& rmi) : size(z), rnd(r), data(d), mp(mi), rmp(rmi) {
-      rrnd = mint4(1) / rnd;
-      if (z != 0) {
-        prefix = suffix = vector<mint4>(z, mint4(0));
-        prefix[0].set(data[0]);
-        for (size_t i = 1; i < z; i++) prefix[i] = prefix[i-1] * rnd + mint4(data[i]);
-        suffix[z-1].set(data.back());
-        for (int i = z-2; i >= 0; i--) suffix[i] = mint4(data[i]) * mp[z-i-1] + suffix[i + 1];
+      rollinghash(int dt, mint4 arg, vector<int> init){
+        size = dt;
+        rnd = arg;
+        data = init;
+        rec.set(1);
+        rec = rec / rnd;
+        pows = vector<mint4>(size+1);
+        pows[0].set(1);
+        for (int i = 1; i <= size; i++){
+          pows[i] = pows[i-1] * rnd;
+        }
+        vector<mint4> tm(size);
+        for (int i = 0; i < size; i++) tm[i].set(init[i]);
+        for (int i = 0; i < size; i++) tm[i] = tm[i] * pows[i];
+        rollinghash_segtree tmp(tm);
+        seg = tmp;
       }
-    }
-    mint4 hash(int l, int r){
-      if (l == r) return mint4(0);
-      assert(0 <= l && l < size);
-      assert(0 < r && r <= size);
-      assert(l < r);
-      return prefix[r-1] - (l == 0 ? mint4(0) : prefix[l-1]) * mp[r-l];
-    }
-    mint4 roll(int l, int r, int dist){
-      return hash(l+dist, r+dist);
-    }
+    private: 
+      rollinghash_segtree seg;
+      mint4 rec;
+      mint4 rnd;
+    public:
+      void reset(vector<int> m) {
+        data = m;
+        vector<mint4> vt(size);
+        for (int i = 0; i < size; i++) vt[i].set(m[i]);
+        for (int i = 0; i < size; i++){
+          vt[i] = vt[i] * pows[i];
+        }
+        rollinghash_segtree tmp(vt);
+        seg = tmp;
+      }
+      void set(int idx, int thing){
+        mint4 tmp; tmp.set(thing);
+        data[idx] = thing;
+        seg.set(idx, tmp * pows[idx]);
+      }
+      mint4 get(int idx){
+        return seg.get(idx);
+      }
+      mint4 prod(int l, int r){
+        mint4 ans = seg.prod(l, r);
+        ans = ans / pows[l];
+        return ans;
+      }
+      mint4 all_prod(){
+        return seg.all_prod();
+      }
+      mint4 roll(int l, int r, mint4 pre){
+        //l, r は移動先 [l, r)
+        mint4 left; left.set(data[l-1]);
+        mint4 right; right.set(data[r-1]);
+        return (((pre - left) + right * pows[r-l-1]) * rec);
+      }
+      mint4 in_roll(int l, int r, mint4 pre){
+        //l, r は移動先 [l, r)
+        mint4 left; left.set(data[l]);
+        mint4 right; right.set(data[r]);
+        return ((pre * rnd) - right * pows[r-l]) + left;
+      }
   };
 }
 
