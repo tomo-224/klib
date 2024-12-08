@@ -17,7 +17,7 @@ dsu_t<class S, class T, T (*op)(S&, S&), S (*e)()> d(vector<S> init);
 
 
 ### メンバ関数
-ほとんど ACL と共通です。。
+ほとんど ACL と共通です。
 
 **データ変更**
 ```cpp
