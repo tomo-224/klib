@@ -2,6 +2,7 @@
 - <a href = "">木</a>
 - <a href = "structure/dsu.md">dsu(Union-Find、素集合データ構造)</a>
 - <a href = "structure/w_dsu.md">weighted(重み付き) Union-Find</a>
+- <a href = "structure/dsu_t.md">演算付き Union-Find</a>
 - <a href = "structure/segtree.md">Segment Tree(セグメント木)</a>
 - <a href = "structure/segtree_2D.md">2D Segment Tree(二次元セグメント木)</a>
 - <a href = "structure/mst.md">Merge Sort Tree</a>
