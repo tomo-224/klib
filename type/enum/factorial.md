@@ -1,6 +1,6 @@
 ## 階乗
 
-### ソースコード（<a href = "n_fact.md">N 重階乗</a>と共通） $...$ <a href = "factorial.cpp">factorial.cpp</a>
+### ソースコード（<a href = "n_fact.md">N 重階乗</a>と共通） $...$ <a href = "factorial.ipp">factorial.ipp</a>
 
 ### コンストラクタ
 ```cpp
