@@ -10,6 +10,6 @@ ${}_n \mathrm{C}_k$ を計算します。
 - `entire` ... $n$
 - `part` ... $k$
 
-- 計算量 ...$O(1)$（掛け算の計算量が $O(1)$ のとき）
+- 計算量 ... $O(1)$（掛け算の計算量が $O(1)$ のとき）
 
 <a href = "https://github.com/tomo-224/klib/blob/main/type/enum.md">戻る</a>
