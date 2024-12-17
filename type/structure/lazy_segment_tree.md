@@ -1,5 +1,7 @@
 # 遅延評価セグメント木 
 
+## BETA
+
 verify: https://atcoder.jp/contests/abc371/submissions/58427249
 
 ```cpp
