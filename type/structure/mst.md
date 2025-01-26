@@ -16,8 +16,8 @@ mst m(vector<ll>& init)
 
 **以下の個数**
 ```cpp
-//lower_amt
-ll lower_amt(ll l, ll r, ll x)
+//leq_amt
+ll leq_amt(ll l, ll r, ll x)
 ```
   - `init` の $[l, r)$ において $x$ 以下の要素の**個数**を求めます。
   - 計算量: $O(\log ^2 N)$
@@ -25,8 +25,8 @@ ll lower_amt(ll l, ll r, ll x)
 
 **以下の和**
 ```cpp
-//lower_sum
-ll lower_sum(ll l, ll r, ll x)
+//leq_sum
+ll leq_sum(ll l, ll r, ll x)
 ```
   - `init` の $[l, r)$ において $x$ 以下の要素の**和**を求めます。
   - 計算量: $O(\log ^2 N)$
