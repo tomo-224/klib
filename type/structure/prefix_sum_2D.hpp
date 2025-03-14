@@ -20,10 +20,10 @@ public:
       }
     }
   }
-  int get(int i, int j) {
+  T get(int i, int j) {
     return data[i][j];
   }
-  int prod(int u, int d, int l, int r) {
+  T prod(int u, int d, int l, int r) {
     if (u >= d || l >= r) return e();
     return add(sub(sub(sum[d][r], sum[d][l]), sum[u][r]), sum[u][l]);
   }
