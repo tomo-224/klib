@@ -53,7 +53,7 @@ private:
   
   void PtoC() {
     c = vector<vector<int>>(size, vector<int>(0));
-    for (int i = 0; i < size; i++) c[p[i]].emplace_back(i);
+    for (int i = 0; i < size; i++) if (p[i] != -1) c[p[i]].emplace_back(i);
   }
   
   void bfs() {
