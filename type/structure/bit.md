@@ -54,7 +54,7 @@ bool at(std::size_t pos)
 **インクリメント**
 ```cpp
 //next
-bool set(const bit m)
+bool next(const bit m)
 ```
   - 自身をインクリメントします。
   - もし`m`以上であれば、`false`を返します。
