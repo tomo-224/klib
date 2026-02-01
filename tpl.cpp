@@ -10,10 +10,11 @@ void _main(){
 
 #else
 #define MAIN
+#ifndef DEBUG
 #pragma GCC target("avx2")
 #pragma GCC optimize("O3")
 #pragma GCC optimize("unroll-loops")
-
+#endif
 #include <bits/stdc++.h>
 #if __has_include(<atcoder/all>)
 #include <atcoder/all>
@@ -79,7 +80,6 @@ void __y_input_vec(int n, Args &...args)
     vector<t> __VA_ARGS__; \
     __y_input_vec(n, __VA_ARGS__)
 
-#define last cout << endl
 #define yn(bl) (bl ? "Yes" : "No")
 #define all(v) v.begin(), v.end()
 #define acc(v) accumulate(v.begin(), v.end(), 0LL)
