@@ -2,6 +2,8 @@
 #define MAIN
 #include __FILE__
 
+// url: https://github.com/tomo-224/klib/blob/main/tpl.cpp
+
 //using mint = modint998244353;
 
 void _main(){
